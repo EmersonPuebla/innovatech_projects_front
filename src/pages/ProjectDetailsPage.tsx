@@ -1,5 +1,6 @@
 import { BlueprintBackground } from "@components/BlueprintBackground";
 import { Header } from "@components/Header";
+import { KanbanContainer } from "@components/KanbanContainer";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Button, Container, Flex, TextField } from "@radix-ui/themes";
 import { useParams } from "react-router-dom";
@@ -38,6 +39,7 @@ export const ProjectDetailsPage = () => {
             </Button>
           </Flex>
         </Container>
+        <KanbanContainer />
       </BlueprintBackground>
     </>
   );
