@@ -1,12 +1,22 @@
 import { BlueprintBackground } from "@components/BlueprintBackground";
 import { Header } from "@components/Header";
 import { KanbanContainer } from "@components/KanbanContainer";
+import { TaskDialog } from "@components/TaskDialog";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Button, Container, Flex, TextField } from "@radix-ui/themes";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export const ProjectDetailsPage = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, taskId } = useParams<{ slug: string; taskId?: string }>();
+  const [taskDetailOpen, setTaskDetailOpen] = useState(false);
+
+  useEffect(() => {
+    const init = async () => {
+      await setTaskDetailOpen(!!taskId);
+    };
+    init();
+  }, [taskId]);
 
   const breadcrumbs = [
     { label: "Proyectos", href: "/projects" },
@@ -40,6 +50,17 @@ export const ProjectDetailsPage = () => {
           </Flex>
         </Container>
         <KanbanContainer />
+        <TaskDialog
+          open={taskDetailOpen}
+          onOpenChange={(open) => {
+            setTaskDetailOpen(open);
+            if (!open) {
+              window.history.back();
+            }
+          }}
+          taskId={taskId}
+          taskTitle={`Tarea ${taskId}`}
+        />
       </BlueprintBackground>
     </>
   );
