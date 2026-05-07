@@ -1,8 +1,14 @@
 import { Box, Container, Flex } from "@radix-ui/themes";
 import { UserMenu } from "@components/UserMenu";
-import { Breadcrumbs } from "@components/Breadcrumbs";
+import { Breadcrumbs, type BreadcrumbItem } from "@components/Breadcrumbs";
 
-export function Header() {
+interface HeaderProps {
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+export function Header({
+  breadcrumbs = [{ label: "Proyectos" }],
+}: HeaderProps) {
   return (
     <Box
       width="100%"
@@ -10,9 +16,15 @@ export function Header() {
       mb="5"
       style={{ borderBottom: "1px solid var(--gray-5)" }}
     >
-      <Container size="4">
+      <Container
+        size="4"
+        style={{
+          marginLeft: "12px",
+          marginRight: "12px",
+        }}
+      >
         <Flex justify="between" align="center">
-          <Breadcrumbs items={[{ label: "Proyectos" }]} />
+          <Breadcrumbs items={breadcrumbs} />
           <UserMenu />
         </Flex>
       </Container>
