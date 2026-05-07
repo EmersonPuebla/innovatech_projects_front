@@ -1,6 +1,6 @@
 import { Box, Container, Flex } from "@radix-ui/themes";
-import { UserMenu } from "./UserMenu";
-import { Breadcrumbs } from "./Breadcrumbs";
+import { UserMenu } from "@components/UserMenu";
+import { Breadcrumbs } from "@components/Breadcrumbs";
 
 export function Header() {
   return (

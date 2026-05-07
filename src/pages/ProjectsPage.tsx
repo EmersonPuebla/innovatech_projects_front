@@ -1,8 +1,8 @@
 import { Container, Flex, Grid, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { ProjectCard } from "../components/ProjectCard";
-import { Header } from "../components/Header";
-import { BlueprintBackground } from "../components/BlueprintBackground";
+import { ProjectCard } from "@components/ProjectCard";
+import { Header } from "@components/Header";
+import { BlueprintBackground } from "@components/BlueprintBackground";
 
 export function ProjectsPage() {
   return (
