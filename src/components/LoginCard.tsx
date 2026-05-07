@@ -11,12 +11,7 @@ import {
   Callout,
 } from "@radix-ui/themes";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-
-// Mockup credentials
-const VALID_CREDENTIALS = {
-  email: "admin@innovatech.com",
-  password: "123",
-};
+import { MOCK_CREDENTIALS } from "@data/mock";
 
 export function LoginCard() {
   const navigate = useNavigate();
@@ -27,8 +22,8 @@ export function LoginCard() {
 
   const handleLogin = () => {
     if (
-      email === VALID_CREDENTIALS.email &&
-      password === VALID_CREDENTIALS.password
+      email === MOCK_CREDENTIALS.email &&
+      password === MOCK_CREDENTIALS.password
     ) {
       setError("");
       navigate("/projects");

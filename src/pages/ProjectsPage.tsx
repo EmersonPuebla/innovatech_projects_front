@@ -4,19 +4,12 @@ import { InfoCircledIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { ProjectCard } from "@components/ProjectCard";
 import { Header } from "@components/Header";
 import { BlueprintBackground } from "@components/BlueprintBackground";
-
-// Mockup projects
-const PROJECTS = [
-  "Clinica Atlas",
-  "SOS Forestal",
-  "Agro Food Manager",
-  "Eduka",
-];
+import { MOCK_PROJECTS } from "@data/mock";
 
 export function ProjectsPage() {
   const [search, setSearch] = useState("");
 
-  const filteredProjects = PROJECTS.filter((project) =>
+  const filteredProjects = MOCK_PROJECTS.filter((project) =>
     project.toLowerCase().includes(search.toLowerCase()),
   );
 

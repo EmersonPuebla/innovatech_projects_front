@@ -2,48 +2,10 @@ import { useState } from "react";
 import { Container, Grid } from "@radix-ui/themes";
 import { DragDropContext, type DropResult } from "@hello-pangea/dnd";
 import { KanbanList } from "@components/KanbanList";
-
-interface KanbanItem {
-  id: string;
-  title: string;
-  description?: string;
-}
-
-interface KanbanData {
-  [key: string]: KanbanItem[];
-}
-
-const INITIAL_DATA: KanbanData = {
-  backlog: [
-    { id: "1", title: "Diseñar interfaz de login", description: "UI/UX" },
-    { id: "2", title: "Setup base de datos", description: "Backend" },
-    { id: "3", title: "Documentar API", description: "Documentación" },
-    { id: "4", title: "Definir estructura de carpetas", description: "DevOps" },
-    { id: "5", title: "Crear mockups", description: "UI/UX" },
-  ],
-  porHacer: [
-    { id: "6", title: "Implementar autenticación", description: "Backend" },
-    { id: "7", title: "Crear componentes base", description: "Frontend" },
-    { id: "8", title: "Configurar base de datos", description: "Backend" },
-  ],
-  haciendo: [
-    { id: "9", title: "Crear API REST", description: "Backend" },
-    { id: "10", title: "Tests unitarios", description: "QA" },
-    { id: "11", title: "Integrar autenticación", description: "Frontend" },
-    { id: "12", title: "Validaciones en formularios", description: "Frontend" },
-  ],
-  terminado: [
-    { id: "13", title: "Configurar proyecto", description: "DevOps" },
-    { id: "14", title: "Setup CI/CD", description: "DevOps" },
-    { id: "15", title: "Crear repo git", description: "DevOps" },
-    { id: "16", title: "Setup eslint", description: "DevOps" },
-    { id: "17", title: "Configurar prettier", description: "DevOps" },
-    { id: "18", title: "Crear archivo README", description: "Documentación" },
-  ],
-};
+import { MOCK_KANBAN, type KanbanData } from "@data/mock";
 
 export function KanbanContainer() {
-  const [data, setData] = useState<KanbanData>(INITIAL_DATA);
+  const [data, setData] = useState<KanbanData>(MOCK_KANBAN);
 
   const handleDragEnd = (result: DropResult) => {
     const { source, destination, draggableId } = result;
