@@ -1,5 +1,6 @@
-import { Box, Flex, Text } from "@radix-ui/themes";
-import { FilePlusIcon } from "@radix-ui/react-icons";
+import { Flex, Text, Tooltip } from "@radix-ui/themes";
+import { DownloadIcon, FileIcon } from "@radix-ui/react-icons";
+import { IconButton } from "@radix-ui/themes/dist/cjs/index.js";
 
 interface Attachment {
   name: string;
@@ -13,23 +14,36 @@ interface AttachmentCardProps {
 export function AttachmentCard({ attachment }: AttachmentCardProps) {
   return (
     <Flex
-      gap="2"
       align="center"
+      p="3"
+      justify="between"
       style={{
-        backgroundColor: "var(--gray-3)",
-        borderRadius: "var(--radius-2)",
-        padding: "8px",
+        backgroundColor: "var(--gray-4)",
+        borderRadius: "var(--radius-5)",
       }}
     >
-      <FilePlusIcon width="16" height="16" />
-      <Box>
+      <Flex direction="row" gap="2">
+        <FileIcon width="18" height="18" />
         <Text size="1" weight="medium">
           {attachment.name}
         </Text>
-        <Text size="1" color="gray" ml="2">
+        <Text size="1" color="gray">
           {attachment.size}
         </Text>
-      </Box>
+      </Flex>
+      <Tooltip content="Descargar archivo">
+        <IconButton
+          variant="ghost"
+          color="gray"
+          size="2"
+          mr="2"
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          <DownloadIcon />
+        </IconButton>
+      </Tooltip>
     </Flex>
   );
 }

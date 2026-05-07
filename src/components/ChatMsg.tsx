@@ -23,40 +23,37 @@ export function ChatMsg({
 }: ChatMessageProps) {
   return (
     <Box
+      p="2"
+      pl="0"
+      className="chat-msg"
       style={{
         backgroundColor: "var(--gray-2)",
         borderRadius: "var(--radius-2)",
-        padding: "12px",
       }}
     >
       <Flex gap="3" mb="2">
-        <Avatar
-          radius="full"
-          size="2"
-          src={avatar}
-          fallback={author[0]}
-        />
+        <Avatar radius="full" size="3" src={avatar} fallback={author[0]} />
         <Box>
           <Flex gap="2" align="center">
             <Text size="2" weight="bold">
               {author}
             </Text>
-            <Text size="1" color="gray">
+            <Text ml="1" size="1" color="gray">
               {time}
             </Text>
           </Flex>
+          <Text size="2" mb={attachments.length > 0 ? "2" : "0"}>
+            {message}
+          </Text>
+          {attachments.length > 0 && (
+            <Flex direction="column" gap="1" mt="2">
+              {attachments.map((file, idx) => (
+                <AttachmentCard key={idx} attachment={file} />
+              ))}
+            </Flex>
+          )}
         </Box>
       </Flex>
-      <Text size="2" mb={attachments.length > 0 ? "2" : "0"}>
-        {message}
-      </Text>
-      {attachments.length > 0 && (
-        <Flex direction="column" gap="1" mt="2">
-          {attachments.map((file, idx) => (
-            <AttachmentCard key={idx} attachment={file} />
-          ))}
-        </Flex>
-      )}
     </Box>
   );
 }
