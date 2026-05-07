@@ -16,13 +16,7 @@ export function Header({
       mb="5"
       style={{ borderBottom: "1px solid var(--gray-5)" }}
     >
-      <Container
-        size="4"
-        style={{
-          marginLeft: "12px",
-          marginRight: "12px",
-        }}
-      >
+      <Container size="4" mr="4" ml="4">
         <Flex justify="between" align="center">
           <Breadcrumbs items={breadcrumbs} />
           <UserMenu />

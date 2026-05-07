@@ -24,13 +24,7 @@ export function ProjectsPage() {
     <>
       <BlueprintBackground>
         <Header></Header>
-        <Container
-          size="3"
-          style={{
-            marginLeft: "12px",
-            marginRight: "12px",
-          }}
-        >
+        <Container size="3" ml="4" mr="4">
           <Flex direction="column" gap="4">
             <TextField.Root
               placeholder="Buscar proyecto…"

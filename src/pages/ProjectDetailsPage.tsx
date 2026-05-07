@@ -27,13 +27,7 @@ export const ProjectDetailsPage = () => {
     <>
       <BlueprintBackground>
         <Header breadcrumbs={breadcrumbs} />
-        <Container
-          size="3"
-          style={{
-            marginLeft: "12px",
-            marginRight: "12px",
-          }}
-        >
+        <Container size="4" ml="4" mr="4">
           <h1>{slug}</h1>
           <Flex width="100%" align="center" gap="3" mb="4">
             <Box flexGrow="1">
@@ -48,19 +42,19 @@ export const ProjectDetailsPage = () => {
               Crear Tarea
             </Button>
           </Flex>
+          <KanbanContainer />
+          <TaskDialog
+            open={taskDetailOpen}
+            onOpenChange={(open) => {
+              setTaskDetailOpen(open);
+              if (!open) {
+                window.history.back();
+              }
+            }}
+            taskId={taskId}
+            taskTitle={`Tarea ${taskId}`}
+          />
         </Container>
-        <KanbanContainer />
-        <TaskDialog
-          open={taskDetailOpen}
-          onOpenChange={(open) => {
-            setTaskDetailOpen(open);
-            if (!open) {
-              window.history.back();
-            }
-          }}
-          taskId={taskId}
-          taskTitle={`Tarea ${taskId}`}
-        />
       </BlueprintBackground>
     </>
   );
