@@ -10,7 +10,7 @@ export function ProjectsPage() {
   const [search, setSearch] = useState("");
 
   const filteredProjects = MOCK_PROJECTS.filter((project) =>
-    project.toLowerCase().includes(search.toLowerCase()),
+    project.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -33,7 +33,10 @@ export function ProjectsPage() {
             {filteredProjects.length > 0 ? (
               <Grid columns={{ initial: "1", sm: "2", md: "3" }} gap="2">
                 {filteredProjects.map((project) => (
-                  <ProjectCard key={project} name={project}></ProjectCard>
+                  <ProjectCard
+                    name={project.name}
+                    description={project.description}
+                  ></ProjectCard>
                 ))}
               </Grid>
             ) : (

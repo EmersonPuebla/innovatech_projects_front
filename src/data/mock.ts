@@ -40,10 +40,22 @@ export const MOCK_MESSAGES = [
 ];
 
 export const MOCK_PROJECTS = [
-  "Clinica Atlas",
-  "SOS Forestal",
-  "Agro Food Manager",
-  "Eduka",
+  {
+    name: "Clinica Atlas",
+    description: "Gestión médica integral y telemedicina",
+  },
+  {
+    name: "SOS Forestal",
+    description: "Monitoreo y prevención de incendios forestales",
+  },
+  {
+    name: "Agro Food Manager",
+    description: "Control de inventarios y trazabilidad agrícola",
+  },
+  {
+    name: "Eduka",
+    description: "Plataforma de aprendizaje adaptativo con IA",
+  },
 ];
 
 export interface KanbanItem {

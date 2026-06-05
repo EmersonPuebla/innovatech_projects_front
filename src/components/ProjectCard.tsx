@@ -2,7 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { Card, Text, Flex } from "@radix-ui/themes";
 
-export function ProjectCard({ name }: { name: string }) {
+export function ProjectCard({
+  name,
+  description,
+}: {
+  name: string;
+  description: string;
+}) {
   const navigate = useNavigate();
   const slug = name.toLowerCase().replace(/\s+/g, "-");
 
@@ -21,6 +27,9 @@ export function ProjectCard({ name }: { name: string }) {
     >
       <Text as="div" size="4" weight="bold" highContrast>
         {name}
+      </Text>
+      <Text color="gray" size={"2"} mt={"-1"}>
+        {description}
       </Text>
 
       <Flex justify="end">
