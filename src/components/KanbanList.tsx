@@ -11,9 +11,15 @@ interface KanbanListProps {
     title: string;
     description?: string;
   }>;
+  searchTerm?: string;
 }
 
-export function KanbanList({ title, listId, items = [] }: KanbanListProps) {
+export function KanbanList({
+  title,
+  listId,
+  items = [],
+  searchTerm = "",
+}: KanbanListProps) {
   return (
     <Box
       style={{
@@ -79,6 +85,7 @@ export function KanbanList({ title, listId, items = [] }: KanbanListProps) {
                 index={index}
                 title={item.title}
                 description={item.description}
+                searchTerm={searchTerm}
               />
             ))}
             {provided.placeholder}

@@ -7,15 +7,22 @@ interface KanbanItemProps {
   description?: string;
   id: string;
   index: number;
+  searchTerm?: string;
 }
 
-export function KanbanItem({ title, description, id, index }: KanbanItemProps) {
+export function KanbanItem({
+  title,
+  description,
+  id,
+  index,
+  searchTerm = "",
+}: KanbanItemProps) {
   const navigate = useNavigate();
   const { slug } = useParams<{ slug: string }>();
 
-  const handleClick = () => {
-    navigate(`/projects/${slug}/${id}`);
-  };
+  const isMatching =
+    searchTerm.trim() === "" ||
+    title.toLowerCase().includes(searchTerm.toLowerCase());
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -25,13 +32,19 @@ export function KanbanItem({ title, description, id, index }: KanbanItemProps) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           size="2"
-          onClick={handleClick}
+          onClick={() => navigate(`/projects/${slug}/${id}`)}
           style={{
             cursor: snapshot.isDragging ? "grabbing" : "grab",
             backgroundColor: snapshot.isDragging
               ? "var(--indigo-3)"
               : undefined,
             flexShrink: 0,
+            outline:
+              searchTerm.trim() !== "" && isMatching
+                ? "2px solid var(--blue-9)"
+                : "none",
+            outlineOffset: "2px",
+            transition: "outline 250ms ease",
             ...provided.draggableProps.style,
           }}
         >

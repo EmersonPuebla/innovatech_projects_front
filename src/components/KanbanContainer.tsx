@@ -4,7 +4,7 @@ import { DragDropContext, type DropResult } from "@hello-pangea/dnd";
 import { KanbanList } from "@components/KanbanList";
 import { MOCK_KANBAN, type KanbanData } from "@data/mock";
 
-export function KanbanContainer() {
+export function KanbanContainer({ searchTerm = "" }: { searchTerm?: string }) {
   const [data, setData] = useState<KanbanData>(MOCK_KANBAN);
 
   const handleDragEnd = (result: DropResult) => {
@@ -48,21 +48,29 @@ export function KanbanContainer() {
           gap="4"
           style={{ minHeight: "600px" }}
         >
-          <KanbanList title="Backlog" listId="backlog" items={data.backlog} />
+          <KanbanList
+            title="Backlog"
+            listId="backlog"
+            items={data.backlog}
+            searchTerm={searchTerm}
+          />
           <KanbanList
             title="Por Hacer"
             listId="porHacer"
             items={data.porHacer}
+            searchTerm={searchTerm}
           />
           <KanbanList
             title="Haciendo"
             listId="haciendo"
             items={data.haciendo}
+            searchTerm={searchTerm}
           />
           <KanbanList
             title="Terminado"
             listId="terminado"
             items={data.terminado}
+            searchTerm={searchTerm}
           />
         </Grid>
       </Container>
