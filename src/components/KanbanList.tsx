@@ -1,6 +1,7 @@
-import { Box, Text } from "@radix-ui/themes";
+import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import { Droppable } from "@hello-pangea/dnd";
 import { KanbanItem } from "@components/KanbanItem";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 interface KanbanListProps {
   title: string;
@@ -25,9 +26,31 @@ export function KanbanList({ title, listId, items = [] }: KanbanListProps) {
         flexDirection: "column",
       }}
     >
-      <Text size="3" weight="bold" style={{ marginBottom: "12px" }}>
-        {title}
-      </Text>
+      <Flex justify={"between"} mb="4">
+        <Flex direction={"column"}>
+          <Text size="4" weight="bold" style={{ marginBottom: "12px" }}>
+            {title}
+          </Text>
+          <Text mt="-3" size={"2"} color="gray">
+            {items.length === 0
+              ? "Sin tareas"
+              : items.length > 1
+                ? items.length + " Tareas"
+                : items.length + " Tarea"}
+          </Text>
+        </Flex>
+
+        <IconButton
+          variant="surface"
+          size={"2"}
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          <PlusIcon></PlusIcon>
+        </IconButton>
+      </Flex>
+
       <Droppable droppableId={listId} type="CARD">
         {(provided, snapshot) => (
           <Box

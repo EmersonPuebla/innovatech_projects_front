@@ -37,10 +37,6 @@ export const ProjectDetailsPage = () => {
                 </TextField.Slot>
               </TextField.Root>
             </Box>
-
-            <Button variant="classic" size="3" style={{ flexShrink: 0 }}>
-              Crear Tarea
-            </Button>
           </Flex>
           <KanbanContainer />
           <TaskDialog
