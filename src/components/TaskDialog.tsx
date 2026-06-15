@@ -1,4 +1,13 @@
-import { Badge, Box, DataList, Dialog, Grid, Select, Separator, Text } from "@radix-ui/themes";
+import {
+  Badge,
+  Box,
+  DataList,
+  Dialog,
+  Grid,
+  Select,
+  Text,
+  VisuallyHidden,
+} from "@radix-ui/themes";
 import { ChatInput } from "./ChatInput";
 import { ChatThread } from "./ChatThread";
 import { Avatar, Flex } from "@radix-ui/themes/dist/cjs/index.js";
@@ -18,6 +27,14 @@ export function TaskDialog({
 }: TaskDialogProps) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <VisuallyHidden>
+        <Dialog.Title>Detalles de la Tarea: {taskTitle}</Dialog.Title>
+
+        <Dialog.Description>
+          {/* TODO: Poner la descripcion real de la tarea aqui */}
+        </Dialog.Description>
+      </VisuallyHidden>
+
       <Dialog.Content
         style={{
           maxHeight: "90vh",
