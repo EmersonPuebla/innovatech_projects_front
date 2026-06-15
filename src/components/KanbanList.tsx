@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
+import { Box, Flex, IconButton, Text, Tooltip } from "@radix-ui/themes";
 import { Droppable } from "@hello-pangea/dnd";
 import { KanbanItem } from "@components/KanbanItem";
 import { PlusIcon } from "@radix-ui/react-icons";
@@ -46,15 +46,17 @@ export function KanbanList({
           </Text>
         </Flex>
 
-        <IconButton
-          variant="surface"
-          size={"2"}
-          style={{
-            cursor: "pointer",
-          }}
-        >
-          <PlusIcon></PlusIcon>
-        </IconButton>
+        <Tooltip content="Añadir tarea">
+          <IconButton
+            variant="surface"
+            size={"2"}
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            <PlusIcon />
+          </IconButton>
+        </Tooltip>
       </Flex>
 
       <Droppable droppableId={listId} type="CARD">
