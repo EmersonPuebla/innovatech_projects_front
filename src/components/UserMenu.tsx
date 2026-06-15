@@ -10,6 +10,7 @@ import {
   Dialog,
   Button,
 } from "@radix-ui/themes";
+import { SettingsDialog } from "./SettingsDialog";
 
 export function UserMenu() {
   const navigate = useNavigate();
@@ -60,21 +61,10 @@ export function UserMenu() {
         </DropdownMenu.Content>
       </DropdownMenu.Root>
 
-      <Dialog.Root open={openSettings} onOpenChange={setOpenSettings}>
-        <Dialog.Content>
-          <Dialog.Title>Configuración</Dialog.Title>
-          <Dialog.Description>
-            {/* TODO: Content here x~X */}
-          </Dialog.Description>
-          <Flex gap="3" mt="4" justify="end">
-            <Dialog.Close>
-              <Button variant="soft" color="gray">
-                Cerrar
-              </Button>
-            </Dialog.Close>
-          </Flex>
-        </Dialog.Content>
-      </Dialog.Root>
+      <SettingsDialog
+        openSettings={openSettings}
+        setOpenSettings={setOpenSettings}
+      ></SettingsDialog>
     </>
   );
 }
